@@ -391,7 +391,7 @@ function Index() {
         <div className="mx-auto grid max-w-6xl gap-10 px-4 md:grid-cols-3">
           <div>
             <img
-              src={logoAsset.url}
+              src={logoAsset}
               alt="Monteiro Transportes e Mudanças"
               width={160}
               height={160}
