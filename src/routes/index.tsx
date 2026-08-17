@@ -123,7 +123,7 @@ function Index() {
         <div className="mx-auto grid max-w-6xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-4 py-3">
           <a href="#inicio" className="flex min-w-0 items-center gap-3">
             <img
-              src={logoAsset.url}
+              src={logoAsset}
               alt="Logo Monteiro Transportes e Mudanças"
               width={56}
               height={56}
