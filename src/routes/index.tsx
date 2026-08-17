@@ -16,8 +16,7 @@ import {
 } from "lucide-react";
 
 import heroTruck from "@/assets/hero-truck.jpg";
-const logoAsset =
-  "https://raw.githubusercontent.com/contatoyvesx/monteiro/main/src/assets/monteiro.png";
+import logoAsset from "@/assets/logo-monteiro.jpg";
 import {
   FloatingWhatsApp,
   PHONE_DISPLAY,
@@ -155,7 +154,6 @@ function Index() {
     <div className="min-h-screen bg-background">
       <FloatingWhatsApp />
 
-      {/* Header */}
       <header className="sticky top-0 z-40 border-b border-white/10 bg-navy-deep/95 backdrop-blur">
         <div className="mx-auto grid max-w-6xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-4 py-3">
           <a href="#inicio" className="flex min-w-0 items-center gap-3">
@@ -203,11 +201,7 @@ function Index() {
         </div>
       </header>
 
-      {/* Hero */}
-      <section
-        id="inicio"
-        className="relative isolate overflow-hidden bg-navy-deep"
-      >
+      <section id="inicio" className="relative isolate overflow-hidden bg-navy-deep">
         <img
           src={heroTruck}
           alt="Caminhão de mudanças em avenida urbana de São Paulo"
@@ -226,13 +220,11 @@ function Index() {
             </span>
 
             <h1 className="rise mt-6 text-4xl font-extrabold uppercase leading-[1.02] text-white sm:text-5xl lg:text-6xl">
-              Sua mudança com{" "}
-              <span className="text-gold">segurança</span>, cuidado e confiança.
+              Sua mudança com <span className="text-gold">segurança</span>, cuidado e confiança.
             </h1>
 
             <p className="rise mt-6 max-w-xl text-base leading-relaxed text-white/80 sm:text-lg">
-              Transportamos seus móveis e pertences com responsabilidade, do
-              seu endereço até o novo destino.
+              Transportamos seus móveis e pertences com responsabilidade, do seu endereço até o novo destino.
             </p>
 
             <div className="rise mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
@@ -250,12 +242,7 @@ function Index() {
 
         <div className="relative border-t border-white/10 bg-navy/60">
           <div className="mx-auto grid max-w-6xl grid-cols-2 divide-x divide-white/10 px-4 text-center md:grid-cols-4">
-            {[
-              "Residenciais",
-              "Comerciais",
-              "Transportes",
-              "Pequenas mudanças",
-            ].map((t) => (
+            {["Residenciais", "Comerciais", "Transportes", "Pequenas mudanças"].map((t) => (
               <span
                 key={t}
                 className="px-2 py-4 font-display text-xs font-bold uppercase tracking-[0.15em] text-white/70 sm:text-sm"
@@ -267,7 +254,6 @@ function Index() {
         </div>
       </section>
 
-      {/* Serviços */}
       <section id="servicos" className="bg-background py-20 sm:py-28">
         <div className="mx-auto max-w-6xl px-4">
           <Reveal>
@@ -286,13 +272,8 @@ function Index() {
                     <s.icon className="size-7" strokeWidth={2} />
                   </span>
 
-                  <h3 className="mt-6 text-xl font-extrabold uppercase text-navy-deep">
-                    {s.title}
-                  </h3>
-
-                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                    {s.text}
-                  </p>
+                  <h3 className="mt-6 text-xl font-extrabold uppercase text-navy-deep">{s.title}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{s.text}</p>
                 </article>
               </Reveal>
             ))}
@@ -302,7 +283,6 @@ function Index() {
             <p className="mt-12 text-center font-display text-lg font-bold uppercase tracking-wide text-navy">
               Sua mudança começa aqui.
             </p>
-
             <div className="mt-5 flex justify-center">
               <WhatsAppButton>Solicite seu orçamento</WhatsAppButton>
             </div>
@@ -310,11 +290,7 @@ function Index() {
         </div>
       </section>
 
-      {/* Por que escolher */}
-      <section
-        id="sobre"
-        className="relative bg-navy-deep py-20 sm:py-28"
-      >
+      <section id="sobre" className="relative bg-navy-deep py-20 sm:py-28">
         <div className="mx-auto max-w-6xl px-4">
           <Reveal>
             <SectionTitle
@@ -332,15 +308,9 @@ function Index() {
                   <span className="flex size-12 shrink-0 items-center justify-center rounded-xl bg-gold/15 text-gold">
                     <r.icon className="size-6" strokeWidth={2} />
                   </span>
-
                   <div className="min-w-0">
-                    <h3 className="text-lg font-bold uppercase text-white">
-                      {r.title}
-                    </h3>
-
-                    <p className="mt-1.5 text-sm leading-relaxed text-white/65">
-                      {r.text}
-                    </p>
+                    <h3 className="text-lg font-bold uppercase text-white">{r.title}</h3>
+                    <p className="mt-1.5 text-sm leading-relaxed text-white/65">{r.text}</p>
                   </div>
                 </div>
               </Reveal>
@@ -349,32 +319,19 @@ function Index() {
         </div>
       </section>
 
-      {/* Como funciona */}
       <section className="bg-secondary py-20 sm:py-28">
         <div className="mx-auto max-w-6xl px-4">
           <Reveal>
-            <SectionTitle
-              eyebrow="Como funciona"
-              title="Três passos para a sua mudança"
-            />
+            <SectionTitle eyebrow="Como funciona" title="Três passos para a sua mudança" />
           </Reveal>
 
           <div className="mt-14 grid gap-6 md:grid-cols-3">
             {steps.map((s, i) => (
               <Reveal key={s.n} delay={i * 110}>
                 <div className="relative h-full overflow-hidden rounded-2xl border border-border bg-card p-8">
-                  <span className="font-display text-5xl font-extrabold text-gold/35">
-                    {s.n}
-                  </span>
-
-                  <h3 className="mt-3 text-xl font-extrabold uppercase text-navy-deep">
-                    {s.title}
-                  </h3>
-
-                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                    {s.text}
-                  </p>
-
+                  <span className="font-display text-5xl font-extrabold text-gold/35">{s.n}</span>
+                  <h3 className="mt-3 text-xl font-extrabold uppercase text-navy-deep">{s.title}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{s.text}</p>
                   <div className="gold-rule absolute inset-x-0 bottom-0 h-1" />
                 </div>
               </Reveal>
@@ -383,42 +340,27 @@ function Index() {
         </div>
       </section>
 
-      {/* Área de atuação */}
       <section className="bg-background py-20 sm:py-28">
         <div className="mx-auto grid max-w-6xl items-center gap-12 px-4 lg:grid-cols-2">
           <Reveal>
-            <span className="font-display text-sm font-bold uppercase tracking-[0.25em] text-gold">
-              Área de atuação
-            </span>
-
+            <span className="font-display text-sm font-bold uppercase tracking-[0.25em] text-gold">Área de atuação</span>
             <h2 className="mt-3 text-3xl font-extrabold uppercase leading-[1.05] text-navy-deep sm:text-4xl">
               Atendemos São Paulo e região
             </h2>
-
             <div className="mt-5 h-1 w-20 rounded-full bg-gold" />
-
             <p className="mt-6 text-base leading-relaxed text-muted-foreground">
-              Realizamos mudanças residenciais, comerciais e transporte de
-              móveis em São Paulo e região. Não encontrou a sua cidade? Fale
-              conosco pelo WhatsApp e confirmamos o atendimento.
+              Realizamos mudanças residenciais, comerciais e transporte de móveis em São Paulo e região. Não encontrou a sua cidade? Fale conosco pelo WhatsApp e confirmamos o atendimento.
             </p>
-
             <ul className="mt-7 flex flex-wrap gap-3">
               {["São Paulo", "Região metropolitana"].map((c) => (
-                <li
-                  key={c}
-                  className="inline-flex items-center gap-2 rounded-full border border-navy/15 bg-secondary px-4 py-2 font-display text-sm font-bold uppercase tracking-wide text-navy"
-                >
+                <li key={c} className="inline-flex items-center gap-2 rounded-full border border-navy/15 bg-secondary px-4 py-2 font-display text-sm font-bold uppercase tracking-wide text-navy">
                   <MapPin className="size-4 text-gold" />
                   {c}
                 </li>
               ))}
             </ul>
-
             <div className="mt-8">
-              <WhatsAppButton>
-                Fale conosco pelo WhatsApp
-              </WhatsAppButton>
+              <WhatsAppButton>Fale conosco pelo WhatsApp</WhatsAppButton>
             </div>
           </Reveal>
 
@@ -432,24 +374,16 @@ function Index() {
                   backgroundSize: "42px 42px",
                 }}
               />
-
               <div className="relative flex aspect-square items-center justify-center">
                 <span className="absolute size-56 rounded-full border border-gold/30 sm:size-72" />
                 <span className="absolute size-36 rounded-full border border-gold/50 sm:size-48" />
                 <span className="absolute size-20 animate-pulse rounded-full bg-gold/20 sm:size-24" />
-
                 <div className="relative flex flex-col items-center text-center">
                   <span className="flex size-14 items-center justify-center rounded-full bg-gold text-navy-deep">
                     <MapPin className="size-7" strokeWidth={2.5} />
                   </span>
-
-                  <span className="mt-4 font-display text-2xl font-extrabold uppercase text-white">
-                    São Paulo
-                  </span>
-
-                  <span className="font-display text-sm font-semibold uppercase tracking-[0.2em] text-gold">
-                    e região
-                  </span>
+                  <span className="mt-4 font-display text-2xl font-extrabold uppercase text-white">São Paulo</span>
+                  <span className="font-display text-sm font-semibold uppercase tracking-[0.2em] text-gold">e região</span>
                 </div>
               </div>
             </div>
@@ -457,48 +391,31 @@ function Index() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section
-        id="contato"
-        className="relative isolate overflow-hidden bg-navy py-20 sm:py-28"
-      >
+      <section id="contato" className="relative isolate overflow-hidden bg-navy py-20 sm:py-28">
         <div
           className="absolute inset-0 opacity-20"
           style={{
-            backgroundImage:
-              "repeating-linear-gradient(135deg, var(--gold) 0 2px, transparent 2px 26px)",
+            backgroundImage: "repeating-linear-gradient(135deg, var(--gold) 0 2px, transparent 2px 26px)",
           }}
         />
-
         <div className="relative mx-auto max-w-3xl px-4 text-center">
           <Reveal>
             <h2 className="text-3xl font-extrabold uppercase leading-[1.05] text-white sm:text-4xl md:text-5xl">
               Vai se mudar? Deixe o transporte com quem entende.
             </h2>
-
             <p className="mt-6 text-base text-white/75 sm:text-lg">
-              Fale com a Monteiro Transportes e Mudanças e solicite seu
-              orçamento.
+              Fale com a Monteiro Transportes e Mudanças e solicite seu orçamento.
             </p>
-
             <div className="mt-10 flex justify-center">
-              <WhatsAppButton
-                size="lg"
-                variant="green"
-                className="w-full sm:w-auto"
-              >
+              <WhatsAppButton size="lg" variant="green" className="w-full sm:w-auto">
                 Fazer orçamento no WhatsApp
               </WhatsAppButton>
             </div>
-
-            <p className="mt-6 font-display text-lg font-bold uppercase tracking-wide text-gold">
-              {PHONE_DISPLAY}
-            </p>
+            <p className="mt-6 font-display text-lg font-bold uppercase tracking-wide text-gold">{PHONE_DISPLAY}</p>
           </Reveal>
         </div>
       </section>
 
-      {/* Footer */}
       <footer className="bg-navy-deep pb-24 pt-16 text-white/70 sm:pb-16">
         <div className="mx-auto grid max-w-6xl gap-10 px-4 md:grid-cols-3">
           <div>
@@ -510,37 +427,24 @@ function Index() {
               loading="lazy"
               className="h-24 w-auto rounded-xl bg-white object-contain p-1.5"
             />
-
             <p className="mt-5 max-w-xs text-sm leading-relaxed">
-              Mudanças residenciais, comerciais, pequenas mudanças e transporte
-              de móveis com segurança e responsabilidade.
+              Mudanças residenciais, comerciais, pequenas mudanças e transporte de móveis com segurança e responsabilidade.
             </p>
           </div>
 
           <div>
-            <h3 className="font-display text-base font-bold uppercase tracking-[0.2em] text-gold">
-              Navegação
-            </h3>
-
+            <h3 className="font-display text-base font-bold uppercase tracking-[0.2em] text-gold">Navegação</h3>
             <ul className="mt-5 space-y-3 text-sm">
               {navLinks.map((l) => (
                 <li key={l.href}>
-                  <a
-                    href={l.href}
-                    className="transition-colors hover:text-gold"
-                  >
-                    {l.label}
-                  </a>
+                  <a href={l.href} className="transition-colors hover:text-gold">{l.label}</a>
                 </li>
               ))}
             </ul>
           </div>
 
           <div>
-            <h3 className="font-display text-base font-bold uppercase tracking-[0.2em] text-gold">
-              Contato
-            </h3>
-
+            <h3 className="font-display text-base font-bold uppercase tracking-[0.2em] text-gold">Contato</h3>
             <ul className="mt-5 space-y-3 text-sm">
               <li>
                 <a
@@ -553,7 +457,6 @@ function Index() {
                   WhatsApp {PHONE_DISPLAY}
                 </a>
               </li>
-
               <li className="inline-flex items-center gap-2">
                 <MapPin className="size-4 text-gold" />
                 São Paulo e região
