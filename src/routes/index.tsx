@@ -16,7 +16,7 @@ import {
 } from "lucide-react";
 
 import heroTruck from "@/assets/hero-truck.jpg";
-import logoAsset from "@/assets/logo-monteiro.jpg.asset.json";
+import logoAsset from "@/assets/monteiro.png";
 import {
   FloatingWhatsApp,
   PHONE_DISPLAY,
