@@ -13,6 +13,7 @@ import {
   MapPin,
   Phone,
   MessageCircle,
+  Send,
 } from "lucide-react";
 
 import heroTruck from "@/assets/hero-truck.jpg";
@@ -82,7 +83,7 @@ const services = [
   {
     icon: Truck,
     title: "Transportes",
-    text: "Transporte de móveis e cargas com segurança, responsabilidade e zelo em cada etapa.",
+    text: "Transporte de móveis, cargas e materiais para feiras e exposições com segurança, responsabilidade e zelo em cada etapa.",
   },
   {
     icon: Package,
@@ -148,6 +149,98 @@ const navLinks = [
   { href: "#sobre", label: "Sobre" },
   { href: "#contato", label: "Contato" },
 ];
+
+function QuoteForm() {
+  const [form, setForm] = useState({
+    nome: "",
+    telefone: "",
+    tipo: "Mudança residencial",
+    embalagem: "Não sei informar",
+    retirada: "",
+    destino: "",
+    data: "",
+    observacoes: "",
+  });
+
+  function update(field: keyof typeof form, value: string) {
+    setForm((current) => ({ ...current, [field]: value }));
+  }
+
+  function submit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    const message = `Olá! Gostaria de solicitar um orçamento para transporte.
+
+👤 Nome: ${form.nome}
+📱 Telefone: ${form.telefone}
+🚚 Tipo de serviço: ${form.tipo}
+📦 Precisa de embalagem: ${form.embalagem}
+📍 Local de retirada: ${form.retirada}
+📍 Local de destino: ${form.destino}
+📅 Data prevista: ${form.data || "A combinar"}
+
+📝 Informações adicionais:
+${form.observacoes || "Não informado"}`;
+
+    window.open(`https://wa.me/5511963406707?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
+  }
+
+  const fieldClass = "mt-1.5 w-full rounded-xl border border-white/15 bg-white/10 px-4 py-3 text-white outline-none transition focus:border-gold focus:ring-2 focus:ring-gold/20";
+  const labelClass = "block text-left font-display text-xs font-bold uppercase tracking-wide text-white/75";
+
+  return (
+    <form onSubmit={submit} className="mt-10 grid gap-5 rounded-3xl border border-white/10 bg-white/[0.06] p-5 text-left backdrop-blur sm:grid-cols-2 sm:p-8">
+      <div>
+        <label className={labelClass}>Nome completo *</label>
+        <input required value={form.nome} onChange={(e) => update("nome", e.target.value)} className={fieldClass} placeholder="Digite seu nome" />
+      </div>
+      <div>
+        <label className={labelClass}>Telefone / WhatsApp *</label>
+        <input required type="tel" value={form.telefone} onChange={(e) => update("telefone", e.target.value)} className={fieldClass} placeholder="(11) 99999-9999" />
+      </div>
+      <div>
+        <label className={labelClass}>Tipo de transporte *</label>
+        <select value={form.tipo} onChange={(e) => update("tipo", e.target.value)} className={fieldClass}>
+          <option>Mudança residencial</option>
+          <option>Mudança comercial</option>
+          <option>Transporte de móveis</option>
+          <option>Transporte de cargas</option>
+          <option>Feiras e exposições</option>
+          <option>Outro</option>
+        </select>
+      </div>
+      <div>
+        <label className={labelClass}>Precisa de embalagem? *</label>
+        <select value={form.embalagem} onChange={(e) => update("embalagem", e.target.value)} className={fieldClass}>
+          <option>Sim</option>
+          <option>Não</option>
+          <option>Não sei informar</option>
+        </select>
+      </div>
+      <div>
+        <label className={labelClass}>Endereço de retirada *</label>
+        <input required value={form.retirada} onChange={(e) => update("retirada", e.target.value)} className={fieldClass} placeholder="Digite o endereço" />
+      </div>
+      <div>
+        <label className={labelClass}>Endereço de destino *</label>
+        <input required value={form.destino} onChange={(e) => update("destino", e.target.value)} className={fieldClass} placeholder="Digite o endereço" />
+      </div>
+      <div className="sm:col-span-2">
+        <label className={labelClass}>Data prevista para o transporte</label>
+        <input type="date" value={form.data} onChange={(e) => update("data", e.target.value)} className={fieldClass} />
+      </div>
+      <div className="sm:col-span-2">
+        <label className={labelClass}>Informações adicionais</label>
+        <textarea value={form.observacoes} onChange={(e) => update("observacoes", e.target.value)} className={fieldClass} rows={4} placeholder="Descreva os itens, quantidade, medidas ou outras informações importantes" />
+      </div>
+      <div className="sm:col-span-2">
+        <button type="submit" className="inline-flex w-full items-center justify-center gap-2.5 rounded-xl bg-whatsapp px-7 py-4 font-display text-base font-bold uppercase tracking-wide text-white transition hover:brightness-110 hover:-translate-y-0.5">
+          <Send className="size-5" strokeWidth={2.5} /> Solicitar orçamento pelo WhatsApp
+        </button>
+      </div>
+    </form>
+  );
+}
 
 function Index() {
   return (
@@ -301,9 +394,9 @@ function Index() {
         <div className="absolute inset-0 opacity-20" style={{backgroundImage:"repeating-linear-gradient(135deg, var(--gold) 0 2px, transparent 2px 26px)"}} />
         <div className="relative mx-auto max-w-3xl px-4 text-center">
           <Reveal>
-            <h2 className="text-3xl font-extrabold uppercase leading-[1.05] text-white sm:text-4xl md:text-5xl">Vai se mudar? Deixe o transporte com quem entende.</h2>
-            <p className="mt-6 text-base text-white/75 sm:text-lg">Fale com a Monteiro Transportes e Mudanças e solicite seu orçamento.</p>
-            <div className="mt-10 flex justify-center"><WhatsAppButton size="lg" variant="green" className="w-full sm:w-auto">Fazer orçamento no WhatsApp</WhatsAppButton></div>
+            <h2 className="text-3xl font-extrabold uppercase leading-[1.05] text-white sm:text-4xl md:text-5xl">Solicite seu orçamento</h2>
+            <p className="mt-6 text-base text-white/75 sm:text-lg">Preencha as informações abaixo e envie seu pedido diretamente para nosso WhatsApp.</p>
+            <QuoteForm />
             <p className="mt-6 font-display text-lg font-bold uppercase tracking-wide text-gold">{PHONE_DISPLAY}</p>
           </Reveal>
         </div>
