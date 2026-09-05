@@ -1,3 +1,4 @@
+import { useState, type FormEvent } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import {
   Building2,
@@ -166,7 +167,7 @@ function QuoteForm() {
     setForm((current) => ({ ...current, [field]: value }));
   }
 
-  function submit(event: React.FormEvent<HTMLFormElement>) {
+  function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
     const message = `Olá! Gostaria de solicitar um orçamento para transporte.
