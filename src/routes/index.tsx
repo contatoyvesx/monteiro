@@ -158,7 +158,14 @@ function QuoteForm() {
     embalagem: "Não sei informar",
     embalagemItens: "",
     montagem: "Não sei informar",
+    montagemItens: "",
     retirada: "",
+    tipoImovelRetirada: "Casa",
+    tipoImovelDestino: "Casa",
+    andarRetirada: "",
+    andarDestino: "",
+    acessoRetirada: "Elevador",
+    acessoDestino: "Elevador",
     destino: "",
     data: "",
     itens: "",
@@ -177,9 +184,11 @@ function QuoteForm() {
 📋 Detalhes do orçamento:
 • Tipo de serviço: ${form.tipo}
 • Precisa de embalagem: ${form.embalagem}${form.embalagem === "Parcial" ? ` (Itens para embalagem: ${form.embalagemItens || "Não informado"})` : ""}
-• Montagem/desmontagem de móveis: ${form.montagem}
+• Montagem/desmontagem de móveis: ${form.montagem}${form.montagem === "Sim" ? " (Itens: " + (form.montagemItens || "Não informado") + ")" : ""}
 • Local de retirada: ${form.retirada}
+• Imóvel de retirada: ${form.tipoImovelRetirada} | Andar: ${form.tipoImovelRetirada === "Casa" ? "Térreo" : form.andarRetirada || "Não informado"} | Acesso: ${form.tipoImovelRetirada === "Casa" ? "Térreo" : form.acessoRetirada}
 • Local de destino: ${form.destino}
+• Imóvel de destino: ${form.tipoImovelDestino} | Andar: ${form.tipoImovelDestino === "Casa" ? "Térreo" : form.andarDestino || "Não informado"} | Acesso: ${form.tipoImovelDestino === "Casa" ? "Térreo" : form.acessoDestino}
 • Data prevista: ${form.data || "A combinar"}
 
 📦 Itens a transportar:
@@ -241,14 +250,44 @@ ${form.observacoes || "Não informado"}`;
           <option>Não sei informar</option>
         </select>
       </div>
+      {form.montagem === "Sim" && (
+        <div>
+          <label className={labelClass}>Quais móveis precisam ser desmontados? *</label>
+          <input required value={form.montagemItens} onChange={(e) => update("montagemItens", e.target.value)} className={fieldClass} placeholder="Ex.: guarda-roupa, cama e mesa" />
+        </div>
+      )}
       <div>
         <label className={labelClass}>Endereço de retirada *</label>
         <input required value={form.retirada} onChange={(e) => update("retirada", e.target.value)} className={fieldClass} placeholder="Digite o endereço" />
       </div>
       <div>
+        <label className={labelClass}>Tipo de imóvel — retirada *</label>
+        <select value={form.tipoImovelRetirada} onChange={(e) => update("tipoImovelRetirada", e.target.value)} className={selectClass}>
+          <option>Casa</option><option>Apartamento</option><option>Comercial</option><option>Outro</option>
+        </select>
+      </div>
+      {form.tipoImovelRetirada !== "Casa" && (
+        <>
+          <div><label className={labelClass}>Andar — retirada *</label><input required type="number" min="1" value={form.andarRetirada} onChange={(e) => update("andarRetirada", e.target.value)} className={fieldClass} placeholder="Ex.: 5" /></div>
+          <div><label className={labelClass}>Acesso — retirada *</label><select value={form.acessoRetirada} onChange={(e) => update("acessoRetirada", e.target.value)} className={selectClass}><option>Elevador</option><option>Escadas</option></select></div>
+        </>
+      )}
+      <div>
         <label className={labelClass}>Endereço de destino *</label>
         <input required value={form.destino} onChange={(e) => update("destino", e.target.value)} className={fieldClass} placeholder="Digite o endereço" />
       </div>
+      <div>
+        <label className={labelClass}>Tipo de imóvel — destino *</label>
+        <select value={form.tipoImovelDestino} onChange={(e) => update("tipoImovelDestino", e.target.value)} className={selectClass}>
+          <option>Casa</option><option>Apartamento</option><option>Comercial</option><option>Outro</option>
+        </select>
+      </div>
+      {form.tipoImovelDestino !== "Casa" && (
+        <>
+          <div><label className={labelClass}>Andar — destino *</label><input required type="number" min="1" value={form.andarDestino} onChange={(e) => update("andarDestino", e.target.value)} className={fieldClass} placeholder="Ex.: 8" /></div>
+          <div><label className={labelClass}>Acesso — destino *</label><select value={form.acessoDestino} onChange={(e) => update("acessoDestino", e.target.value)} className={selectClass}><option>Elevador</option><option>Escadas</option></select></div>
+        </>
+      )}
       <div className="sm:col-span-2">
         <label className={labelClass}>Data prevista para o transporte</label>
         <input type="date" value={form.data} onChange={(e) => update("data", e.target.value)} className={fieldClass} />
