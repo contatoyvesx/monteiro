@@ -201,7 +201,7 @@ ${form.observacoes || "Não informado"}`;
       <div>
         <label className={labelClass}>Tipo de transporte *</label>
         <select value={form.tipo} onChange={(e) => update("tipo", e.target.value)} className={selectClass}>
-          <option>Mudança residencial</
+          <option>Mudança residencial</option>
           <option>Mudança comercial</option>
           <option>Transporte de móveis</option>
           <option>Transporte de cargas</option>
