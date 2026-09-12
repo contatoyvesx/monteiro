@@ -189,6 +189,7 @@ ${form.observacoes || "Não informado"}`;
   }
 
   const fieldClass = "mt-1.5 w-full rounded-xl border border-white/15 bg-white/10 px-4 py-3 text-white outline-none transition focus:border-gold focus:ring-2 focus:ring-gold/20";
+  const selectClass = "mt-1.5 w-full rounded-xl border border-white/15 bg-white px-4 py-3 text-navy-deep outline-none transition focus:border-gold focus:ring-2 focus:ring-gold/20";
   const labelClass = "block text-left font-display text-xs font-bold uppercase tracking-wide text-white/75";
 
   return (
@@ -242,7 +243,7 @@ ${form.observacoes || "Não informado"}`;
 
       <div className="sm:col-span-2">
         <label className={labelClass}>Informações adicionais</label>
-        <textarea value={form.observacoes} onChange={(e) => update("observacoes", e.target.value)} className={fieldClass} rows={4} placeholder="Descreva os itens, quantidade, medidas ou outras informações importantes" />
+        <textarea value={form.observacoes} onChange={(e) => update("observacoes", e.target.value)} className={fieldClass} rows={3} placeholder="Informe quantidade, medidas, escadas, elevador ou outras informações importantes" />
       </div>
       <div className="sm:col-span-2">
         <button type="submit" className="inline-flex w-full items-center justify-center gap-2.5 rounded-xl bg-whatsapp px-7 py-4 font-display text-base font-bold uppercase tracking-wide text-white transition hover:brightness-110 hover:-translate-y-0.5">
