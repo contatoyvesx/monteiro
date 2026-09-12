@@ -74,7 +74,7 @@ const services = [
   {
     icon: Home,
     title: "Mudanças Residenciais",
-    text: "Transporte seguro para casas e apartamentos, com ou sem desmontagem e montagem de móveis, conforme a sua necessidade.",
+    text: "Mudanças feitas com cuidado e eficiência. Realizamos desmontagem e montagem de móveis conforme a sua necessidade, garantindo praticidade em cada etapa da mudança.",
   },
   {
     icon: Building2,
