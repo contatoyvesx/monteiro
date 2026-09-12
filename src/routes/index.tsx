@@ -156,6 +156,8 @@ function QuoteForm() {
     nome: "",
     tipo: "Mudança residencial",
     embalagem: "Não sei informar",
+    embalagemItens: "",
+    montagem: "Não sei informar",
     retirada: "",
     destino: "",
     data: "",
@@ -174,7 +176,8 @@ function QuoteForm() {
 
 📋 Detalhes do orçamento:
 • Tipo de serviço: ${form.tipo}
-• Precisa de embalagem: ${form.embalagem}
+• Precisa de embalagem: ${form.embalagem}${form.embalagem === "Parcial" ? ` (Itens para embalagem: ${form.embalagemItens || "Não informado"})` : ""}
+• Montagem/desmontagem de móveis: ${form.montagem}
 • Local de retirada: ${form.retirada}
 • Local de destino: ${form.destino}
 • Data prevista: ${form.data || "A combinar"}
@@ -204,7 +207,7 @@ ${form.observacoes || "Não informado"}`;
           <option>Mudança residencial</option>
           <option>Mudança comercial</option>
           <option>Transporte de móveis</option>
-          <option>Transporte de cargas</option>
+          <option>Transporte de cargas sensíveis</option>
           <option>Feiras e exposições</option>
           <option>Outro</option>
         </select>
@@ -212,6 +215,27 @@ ${form.observacoes || "Não informado"}`;
       <div>
         <label className={labelClass}>Precisa de embalagem? *</label>
         <select value={form.embalagem} onChange={(e) => update("embalagem", e.target.value)} className={selectClass}>
+          <option>Sim</option>
+          <option>Não</option>
+          <option>Parcial</option>
+          <option>Não sei informar</option>
+        </select>
+      </div>
+      {form.embalagem === "Parcial" && (
+        <div>
+          <label className={labelClass}>Quais itens precisam de embalagem? *</label>
+          <input
+            required
+            value={form.embalagemItens}
+            onChange={(e) => update("embalagemItens", e.target.value)}
+            className={fieldClass}
+            placeholder="Ex.: TV, espelhos e objetos frágeis"
+          />
+        </div>
+      )}
+      <div>
+        <label className={labelClass}>Precisa de montagem/desmontagem? *</label>
+        <select value={form.montagem} onChange={(e) => update("montagem", e.target.value)} className={selectClass}>
           <option>Sim</option>
           <option>Não</option>
           <option>Não sei informar</option>
