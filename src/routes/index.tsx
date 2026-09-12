@@ -154,12 +154,12 @@ const navLinks = [
 function QuoteForm() {
   const [form, setForm] = useState({
     nome: "",
-    telefone: "",
     tipo: "Mudança residencial",
     embalagem: "Não sei informar",
     retirada: "",
     destino: "",
     data: "",
+    itens: "",
     observacoes: "",
   });
 
@@ -170,15 +170,17 @@ function QuoteForm() {
   function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
-    const message = `Olá! Gostaria de solicitar um orçamento para transporte.
+    const message = `Olá, eu me chamo ${form.nome}, gostaria de solicitar um orçamento.
 
-👤 Nome: ${form.nome}
-📱 Telefone: ${form.telefone}
-🚚 Tipo de serviço: ${form.tipo}
-📦 Precisa de embalagem: ${form.embalagem}
-📍 Local de retirada: ${form.retirada}
-📍 Local de destino: ${form.destino}
-📅 Data prevista: ${form.data || "A combinar"}
+📋 Detalhes do orçamento:
+• Tipo de serviço: ${form.tipo}
+• Precisa de embalagem: ${form.embalagem}
+• Local de retirada: ${form.retirada}
+• Local de destino: ${form.destino}
+• Data prevista: ${form.data || "A combinar"}
+
+📦 Itens a transportar:
+${form.itens || "Não informado"}
 
 📝 Informações adicionais:
 ${form.observacoes || "Não informado"}`;
@@ -196,13 +198,9 @@ ${form.observacoes || "Não informado"}`;
         <input required value={form.nome} onChange={(e) => update("nome", e.target.value)} className={fieldClass} placeholder="Digite seu nome" />
       </div>
       <div>
-        <label className={labelClass}>Telefone / WhatsApp *</label>
-        <input required type="tel" value={form.telefone} onChange={(e) => update("telefone", e.target.value)} className={fieldClass} placeholder="(11) 99999-9999" />
-      </div>
-      <div>
         <label className={labelClass}>Tipo de transporte *</label>
-        <select value={form.tipo} onChange={(e) => update("tipo", e.target.value)} className={fieldClass}>
-          <option>Mudança residencial</option>
+        <select value={form.tipo} onChange={(e) => update("tipo", e.target.value)} className={selectClass}>
+          <option>Mudança residencial</
           <option>Mudança comercial</option>
           <option>Transporte de móveis</option>
           <option>Transporte de cargas</option>
@@ -212,7 +210,7 @@ ${form.observacoes || "Não informado"}`;
       </div>
       <div>
         <label className={labelClass}>Precisa de embalagem? *</label>
-        <select value={form.embalagem} onChange={(e) => update("embalagem", e.target.value)} className={fieldClass}>
+        <select value={form.embalagem} onChange={(e) => update("embalagem", e.target.value)} className={selectClass}>
           <option>Sim</option>
           <option>Não</option>
           <option>Não sei informar</option>
@@ -230,6 +228,18 @@ ${form.observacoes || "Não informado"}`;
         <label className={labelClass}>Data prevista para o transporte</label>
         <input type="date" value={form.data} onChange={(e) => update("data", e.target.value)} className={fieldClass} />
       </div>
+      <div className="sm:col-span-2">
+        <label className={labelClass}>Itens a transportar *</label>
+        <textarea
+          required
+          value={form.itens}
+          onChange={(e) => update("itens", e.target.value)}
+          className={fieldClass}
+          rows={4}
+          placeholder="Liste os principais itens. Ex.: sofá, cama, guarda-roupa, geladeira, caixas..."
+        />
+      </div>
+
       <div className="sm:col-span-2">
         <label className={labelClass}>Informações adicionais</label>
         <textarea value={form.observacoes} onChange={(e) => update("observacoes", e.target.value)} className={fieldClass} rows={4} placeholder="Descreva os itens, quantidade, medidas ou outras informações importantes" />
